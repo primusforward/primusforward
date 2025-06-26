@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primus Forward - Finance Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #233344; /* Dark Blue for general text */
+        }
+        .header-bg {
+            background-color: rgba(35, 51, 68, 0.95); /* Blue (#233344) with slight transparency */
+        }
+        .text-green-primary {
+            color: #027361; /* Green */
+        }
+        .bg-green-primary {
+            background-color: #027361; /* Green */
+        }
+        .text-blue-dark {
+            color: #233344; /* Blue */
+        }
+        .bg-blue-dark {
+            background-color: #233344; /* Blue */
+        }
+        .text-beige-accent {
+            color: #ba8f62; /* Beige */
+        }
+        .bg-beige-accent {
+            background-color: #ba8f62; /* Beige */
+        }
+        .hover-effect:hover {
+            transform: translateY(-3px);
+            transition: all 0.3s ease-in-out;
+        }
+        .cta-button {
+            @apply px-8 py-3 rounded-full font-semibold transition duration-300 ease-in-out;
+        }
+        .primary-cta {
+            @apply bg-green-primary text-white hover:bg-opacity-90;
+        }
+        .secondary-cta {
+            @apply border border-green-primary text-green-primary hover:bg-green-primary hover:text-white;
+        }
+        .section-heading {
+            @apply text-4xl font-bold text-blue-dark mb-10 text-center;
+        }
+        .course-card {
+            @apply bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full;
+        }
+        .course-card img {
+            @apply w-full h-48 object-cover;
+        }
+        .course-card-content {
+            @apply p-6 flex flex-col flex-grow;
+        }
+        .course-card-title {
+            @apply text-xl font-semibold text-blue-dark mb-2;
+        }
+        .course-card-description {
+            @apply text-gray-600 text-sm mb-4 flex-grow;
+        }
+        .course-card-details span {
+            @apply text-sm text-gray-500 mr-4;
+        }
+        .course-card-details svg {
+            @apply inline-block mr-1 w-4 h-4;
+        }
+        /* Sticky header padding for content */
+        body {
+            padding-top: 80px; /* Adjust based on header height */
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px; /* Adjust for mobile header height */
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animation for FAQ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="header-bg fixed top-0 left-0 w-full z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#home" class="flex items-center text-white text-2xl font-bold">
+                Primus Forward
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-green-primary transition duration-300">Home</a>
+                <a href="#about" class="text-white hover:text-green-primary transition duration-300">About Us</a>
+                <a href="#courses" class="text-white hover:text-green-primary transition duration-300">Courses</a>
+                <a href="#contact" class="text-white hover:text-green-primary transition duration-300">Contact Us</a>
+            </div>
+            <a href="#courses" class="hidden md:block primary-cta">View All Courses</a>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-dark py-4">
+            <nav class="flex flex-col items-center space-y-4">
+                <a href="#home" class="text-white hover:text-green-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Home</a>
+                <a href="#about" class="text-white hover:text-green-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About Us</a>
+                <a href="#courses" class="text-white hover:text-green-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Courses</a>
+                <a href="#contact" class="text-white hover:text-green-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact Us</a>
+                <a href="#courses" class="primary-cta w-max">View All Courses</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative bg-blue-dark text-white py-20 md:py-32 overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">Advance Your Career in Finance.</h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">From Classroom to Corporate: Master Finance, Ace Your Career.</p>
+                <a href="#courses" class="primary-cta text-lg md:text-xl hover-effect">Explore Our Courses</a>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">Why Choose Primus Forward?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-8 bg-gray-50 rounded-lg shadow-md text-center hover-effect">
+                        <div class="text-green-primary mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-dark mb-3">Expert Instructors</h3>
+                        <p class="text-gray-600">Learn from seasoned industry professionals with real-world experience.</p>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-lg shadow-md text-center hover-effect">
+                        <div class="text-green-primary mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M16 16h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-dark mb-3">Flexible Learning</h3>
+                        <p class="text-gray-600">Programs designed to fit your schedule and learning pace.</p>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-lg shadow-md text-center hover-effect">
+                        <div class="text-green-primary mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15.711l-1.5.338a.5.5 0 00-.5.5v2.857a.5.5 0 01-.5.5l-1.5-.338A23.931 23.931 0 013 13.255m18 0H3m18 0c0 2.942-.588 5.753-1.637 8.358m-16.726 0C3.588 19.008 3 16.197 3 13.255"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-dark mb-3">Career-Focused Curriculum</h3>
+                        <p class="text-gray-600">Curriculum aligned with industry demands for immediate career impact.</p>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-lg shadow-md text-center hover-effect">
+                        <div class="text-green-primary mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.007 12.007 0 002.944 12c.005 3.654 1.838 7.042 4.673 9.065l1.047.785a.5.5 0 00.573 0l1.047-.785C14.162 19.042 16.002 15.654 16.002 12.001c0-2.31-.75-4.47-2.078-6.177"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-dark mb-3">Professional Certification</h3>
+                        <p class="text-gray-600">Gain recognized certifications that boost your professional credibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-beige-accent bg-opacity-10">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">Our Popular Course</h2>
+                <div class="flex justify-center">
+                    <div class="course-card max-w-sm md:max-w-md w-full hover-effect">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1011&q=80" alt="PCAP Course Image">
+                        <div class="course-card-content">
+                            <h3 class="course-card-title">PCAP (Primus Certified Accounts Professional)</h3>
+                            <p class="course-card-description">
+                                A flagship industry-integrated curriculum to transform students and early professionals into job-ready finance and accounting experts.
+                            </p>
+                            <div class="course-card-details mb-4">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 6 Months</span>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 005-5V7a4 4 0 00-4-4H7a4 4 0 00-4 4v2m6 5l2 2 4-4m6 10v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2"></path></svg> Job Ready</span>
+                            </div>
+                            <a href="#courses" class="primary-cta text-center mt-auto">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">What Our Students Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student Testimonial" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-green-primary">
+                        <p class="text-lg text-gray-700 italic mb-4">"Primus Forward transformed my understanding of finance. The practical training was invaluable!"</p>
+                        <p class="font-semibold text-blue-dark">- Jane Doe, PCAP Graduate</p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student Testimonial" class="w-24 h-24 rounded-full mb-4 object-cover border-4 border-green-primary">
+                        <p class="text-lg text-gray-700 italic mb-4">"The instructors are top-notch, and the curriculum is perfectly aligned with industry needs. Highly recommend!"</p>
+                        <p class="font-semibold text-blue-dark">- John Smith, Aspiring Professional</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 bg-beige-accent bg-opacity-10">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">About Primus Forward</h2>
+                <div class="flex flex-col md:flex-row items-center gap-10 mb-20">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Our Mission" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h3 class="text-3xl font-bold text-blue-dark mb-6">Our Mission: From Classroom to Corporate</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            At Primus Forward, our core mission with the <strong>PCAP (Primus Certified Accounts Professional)</strong> program is to bridge the gap between academic learning and practical job expectations in the finance domain.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            We are committed to transforming students and early professionals into job-ready finance and accounting experts, equipped with real-world skills, technical proficiency, and workplace readiness. This is achieved through a unique blend of intensive classroom instruction and invaluable live firm-based training.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Our commitment is to student success, ensuring they master in-demand skills through immersive training and real-office internships, guided by industry professionals.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="section-heading mt-16">Meet Our Expert Instructors</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center hover-effect">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Instructor Name" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-beige-accent">
+                        <h3 class="text-xl font-semibold text-blue-dark mb-2">Sarah Johnson</h3>
+                        <p class="text-green-primary font-medium">Lead Instructor, Finance</p>
+                        <p class="text-gray-600 mt-3 text-sm">15+ years experience in corporate finance and accounting. Former CFO at TechStart Inc. Specializes in financial analysis and strategic planning.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center hover-effect">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Instructor Name" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-beige-accent">
+                        <h3 class="text-xl font-semibold text-blue-dark mb-2">Michael Chen</h3>
+                        <p class="text-green-primary font-medium">Senior Accountant, Training Specialist</p>
+                        <p class="text-gray-600 mt-3 text-sm">CPA with 12 years experience in public accounting. Expert in tax compliance, auditing, and financial reporting for small and medium businesses.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center hover-effect">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Instructor Name" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-beige-accent">
+                        <h3 class="text-xl font-semibold text-blue-dark mb-2">Priya Patel</h3>
+                        <p class="text-green-primary font-medium">Financial Analyst, Mentor</p>
+                        <p class="text-gray-600 mt-3 text-sm">Investment banking background with expertise in financial modeling and valuation. Passionate about helping students develop practical analytical skills.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="bg-blue-dark text-white py-12 px-8 rounded-lg shadow-lg text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Our Complete Course Catalog</h2>
+                    <p class="text-xl opacity-90">Unlock your potential with our industry-leading finance and accounting programs.</p>
+                </div>
+
+                <div class="flex justify-center">
+                    <div class="course-card max-w-3xl w-full">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1011&q=80" alt="PCAP Course Image">
+                        <div class="course-card-content p-8">
+                            <h3 class="course-card-title text-3xl mb-4 text-green-primary">PCAP (Primus Certified Accounts Professional)</h3>
+                            <p class="text-gray-700 leading-relaxed mb-6">
+                                <strong>Program Objective:</strong> To bridge the gap between academic learning and practical job expectations in the finance domain. This 6-month intensive program is designed to transform students and early professionals into job-ready finance and accounting experts, equipped with real-world skills, technical proficiency, and workplace readiness through a unique blend of classroom instruction and live firm-based training.
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <h4 class="font-bold text-blue-dark text-xl mb-3">Program Structure:</h4>
+                                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                        <li><span class="font-semibold">Offline Classroom Sessions:</span> Structured curriculum-based learning by domain experts, case-based learning, and role-plays (3 Months, 200 Hours)</li>
+                                        <li><span class="font-semibold">On-the-Job Practical Training:</span> In-house training within our consulting firm across live projects, client accounts, and internal operations (3 Months, 420 Hours)</li>
+                                        <li><span class="font-semibold">Total Duration:</span> Holistic job-oriented development (6 Months, 720 Hours)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-blue-dark text-xl mb-3">Key Details:</h4>
+                                    <p class="text-gray-700 mb-2">
+                                        <span class="font-semibold">Duration:</span> 6 Months
+                                    </p>
+                                    <p class="text-gray-700 mb-2">
+                                        <span class="font-semibold">Skill Level:</span> Beginner to Intermediate (Job-ready)
+                                    </p>
+                                    <p class="text-gray-700 mb-2">
+                                        <span class="font-semibold">Timeframe:</span> Intensive, Full-time Commitment
+                                    </p>
+                                    <p class="text-gray-700 mb-2">
+                                        <span class="font-semibold">Certification:</span> Primus Certified Accounts Professional
+                                    </p>
+                                    <p class="text-gray-700 mb-2">
+                                        <span class="font-semibold">Price:</span> <span class="text-green-primary font-bold">Inquire for Details</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h4 class="font-bold text-blue-dark text-xl mb-4">Curriculum Overview (Modular Format):</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">📚 Module 1: Practical Accounting & Bookkeeping</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>Journal entries, ledgers, bank reconciliations</li>
+                                        <li>Trial balance and financial statements</li>
+                                        <li>Software: Tally, Zoho Books, QuickBooks</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">📊 Module 2: Excel & Digital Finance Tools</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>Excel for accounting, dashboards, pivots</li>
+                                        <li>Power Query, MIS reports, automation basics</li>
+                                        <li>Exposure to Power BI and Google Sheets</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">🧾 Module 3: GST & TDS – Compliance Basics</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>GST registration, return filing, e-invoicing</li>
+                                        <li>TDS deduction, payment, and return filing</li>
+                                        <li>Portal navigation (GST, TRACES)</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">👥 Module 4: Payroll, ESI & EPF</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>Payroll setup and statutory compliance</li>
+                                        <li>PF, ESI returns, challans, and reports</li>
+                                        <li>Payroll software hands-on training</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">💼 Module 5: Professionalism & Communication</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>Workplace behavior, email etiquette, reporting</li>
+                                        <li>Client interactions and documentation skills</li>
+                                        <li>Resume building, mock interviews, LinkedIn presence</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">📈 Module 6: Financial Planning & Analysis (FP&A) – Foundation</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>Budgeting, forecasting, and business planning</li>
+                                        <li>Variance analysis and cash flow preparation</li>
+                                        <li>Intro to investor reports and pitch support</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg col-span-1 md:col-span-2 lg:col-span-3">
+                                    <h5 class="font-semibold text-lg text-green-primary mb-2">📝 Module 7: Industry Exposure & Add-on Tracks</h5>
+                                    <ul class="list-disc list-inside text-gray-700 text-sm">
+                                        <li>Internal audits, compliance checklists, documentation</li>
+                                        <li>Exposure to ERP (ODOO)</li>
+                                        <li>Basics of startup finance and consulting</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h4 class="font-bold text-blue-dark text-xl mb-4">🏢 Live Practical Training (420 Hours in-Firm)</h4>
+                            <p class="text-gray-700 leading-relaxed mb-6">
+                                Students will be embedded into real-time roles and responsibilities within our firm. This includes:
+                            </p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2 mb-8">
+                                <li>Live accounting/bookkeeping for clients</li>
+                                <li>MIS & Financial Statements preparation and reporting</li>
+                                <li>GST/TDS return support</li>
+                                <li>ESI & EPF returns and Payroll processing</li>
+                                <li>MCA/ROC return</li>
+                                <li>Project work and audit file preparations</li>
+                                <li>Team meetings, reviews, and client interactions</li>
+                            </ul>
+                            <a href="#contact" class="primary-cta text-center w-full">Enroll Now / Get Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 bg-beige-accent bg-opacity-10">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">Get in Touch</h2>
+                <div class="flex flex-col md:flex-row gap-10">
+                    <div class="md:w-1/2 bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-blue-dark mb-6">Send Us a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="full-name" class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-primary" placeholder="Your Full Name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-primary" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-gray-700 text-sm font-bold mb-2">Subject</label>
+                                <input type="text" id="subject" name="subject" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-primary" placeholder="Inquiry about PCAP Course">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                                <textarea id="message" name="message" rows="6" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-primary" placeholder="Your message..."></textarea>
+                            </div>
+                            <button type="submit" class="primary-cta w-full hover-effect">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="md:w-1/2 bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-bold text-blue-dark mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="font-semibold text-blue-dark mb-2">Address:</p>
+                                <p class="text-gray-700">Primus Forward Academy, 123 Finance Street, Business Hub, Kochi, Kerala, India 682001</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-blue-dark mb-2">Email:</p>
+                                <p><a href="mailto:contact@primusforward.com" class="text-green-primary hover:underline">contact@primusforward.com</a></p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-blue-dark mb-2">Phone:</p>
+                                <p><a href="tel:+15551234567" class="text-green-primary hover:underline">+91 (123) 456-7890</a></p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-blue-dark mb-4">Our Location</h3>
+                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-md">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.34963073356!2d76.29424757451336!3d10.01358047290074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080c5e7b7f9d8d%3A0x8f7d9c0e0b0e0b0e!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1718974514589!5m2!1sen!2sin"
+                                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-blue-dark mb-6 text-center">Frequently Asked Questions</h3>
+                    <div id="faq-accordion" class="space-y-4">
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="w-full text-left p-4 flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                                <span class="font-semibold text-blue-dark">What is the PCAP program duration?</span>
+                                <svg class="w-6 h-6 text-green-primary transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="p-4 pt-0 hidden text-gray-700">
+                                The PCAP (Primus Certified Accounts Professional) program is an intensive 6-month course, split into 3 months of offline classroom sessions and 3 months of in-firm practical training.
+                            </div>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="w-full text-left p-4 flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                                <span class="font-semibold text-blue-dark">What kind of job assistance does Primus Forward provide?</span>
+                                <svg class="w-6 h-6 text-green-primary transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="p-4 pt-0 hidden text-gray-700">
+                                Our program is designed to make you job-ready. We provide extensive practical training, resume building workshops, mock interviews, and guidance on LinkedIn presence to help you secure a role in the finance and accounting industry. The 3-month in-firm training is a direct bridge to real-world job expectations.
+                            </div>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg">
+                            <button class="w-full text-left p-4 flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                                <span class="font-semibold text-blue-dark">Are there any prerequisites for enrolling in PCAP?</span>
+                                <svg class="w-6 h-6 text-green-primary transition-transform duration-300 transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="p-4 pt-0 hidden text-gray-700">
+                                The PCAP program is suitable for students who have completed higher education and are looking to enter the finance industry, current professionals seeking to upskill, and individuals at the beginning of their finance careers. While a basic understanding of finance is helpful, the program is comprehensive and designed to build skills from the ground up.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-blue-dark text-white py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div class="mb-6 md:mb-0">
+                <a href="#home" class="text-white text-2xl font-bold mb-4 block">Primus Forward</a>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Empowering the next generation of finance and accounting professionals with real-world skills and practical expertise.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-semibold text-green-primary mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
+                    <li><a href="#about" class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                    <li><a href="#courses" class="text-gray-300 hover:text-white transition duration-300">Courses</a></li>
+                    <li><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-semibold text-green-primary mb-4">Contact Info</h4>
+                <ul class="space-y-2 text-gray-300">
+                    <li><i class="inline-block mr-2">📍</i> 123 Finance St, Business Hub, Kochi, India</li>
+                    <li><i class="inline-block mr-2">📧</i> <a href="mailto:contact@primusforward.com" class="hover:text-white">contact@primusforward.com</a></li>
+                    <li><i class="inline-block mr-2">📞</i> <a href="tel:+15551234567" class="hover:text-white">+91 (123) 456-7890</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xl font-semibold text-green-primary mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.402 2.865 8.18 6.83 9.504.475.087.687-.206.687-.455 0-.224-.009-.817-.014-1.677-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.111-1.458-.081-1.472.355-.024.538.29.538.29.316.539.824.385 1.026.295.032-.229.123-.385.225-.472-1.5-.17-3.076-.75-3.076-3.344 0-.741.264-1.346.696-1.82-0.07-.17-.302-.857.067-1.792 0 0 .568-.182 1.868.694.538-.149 1.113-.224 1.688-.227.575.003 1.15.078 1.688.227 1.3-.876 1.868-.694 1.868-.694.369.935.137 1.622.067 1.792.433.474.696 1.08.696 1.82 0 2.599-1.579 3.172-3.084 3.344.243.208.484.619.484 1.246 0 .902-.009 1.63-.009 1.854 0 .248.209.544.693.454C20.138 20.2 23 16.422 23 12.017 23 6.484 18.522 2 13 2z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.254 6.092c-.752.336-1.558.562-2.39.664.866-.52 1.534-1.347 1.848-2.33a8.216 8.216 0 01-2.658 1.018c-.776-.828-1.884-1.347-3.116-1.347-2.356 0-4.27 1.905-4.27 4.256 0 .334.037.659.108.973-3.556-.178-6.702-1.866-8.812-4.426-.37.637-.582 1.378-.582 2.164 0 1.472.748 2.766 1.884 3.532-.69-.022-1.34-.204-1.91-.51-.004.018-.004.036-.004.054 0 2.064 1.464 3.785 3.407 4.185-.357.097-.735.15-1.125.15-.276 0-.546-.027-.81-.077.544 1.684 2.11 2.915 3.978 2.952-1.45.698-3.27 1.115-5.26.115 0-.015-.008-.03-.008-.046 0-.016 0-.032-.008-.048A8.205 8.205 0 004.01 19.5c.018.006.036.01.054.016 1.968 0 3.765-.898 4.996-2.316.012-.016.024-.032.036-.048.01-.016.02-.032.028-.048A11.66 11.66 0 0022.254 6.092z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+            &copy; 2024 Primus Forward. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Accordion
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                content.classList.add('animate-fade-in');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.remove('animate-fade-in');
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
